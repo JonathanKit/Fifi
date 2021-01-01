@@ -1,0 +1,263 @@
+﻿<reactiveui:ReactiveWindow 
+    x:Class="HelloWorldRUI.MainWindow"
+        x:TypeArguments="helloworldrui:AppViewModel"
+        xmlns:helloworldrui="clr-namespace:HelloWorldRUI"
+        xmlns:reactiveui="http://reactiveui.net"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="FIFI" MinHeight="720" Height="192" MinWidth="1280" Width="325">
+
+    
+    <Window.Resources>
+        
+        <ResourceDictionary>
+            <System:Double x:Key="labelfontsize1">14</System:Double>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="E:\Downloads\HelloWorldRUI-master\HelloWorldRUI-master\HelloWorldRUI\Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>    
+        </ResourceDictionary>
+        
+        <!-- ComboBox, RadioButton, CheckBox, etc... -->
+    </Window.Resources>
+
+
+
+    <DockPanel  Background="#fdf498">
+        <Grid DockPanel.Dock="Top" VerticalAlignment="Stretch" Height="auto" Background="#ee4035">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label DockPanel.Dock="Left" x:Name="title" Content="FIFI the film finder" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Background="#0392cf"/>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Label DockPanel.Dock="Right" x:Name="search_label" Content="Search" FontSize="20" VerticalAlignment="Center" />
+                <TextBox DockPanel.Dock="Right" x:Name="searchtextbox" Text="" FontSize="18" Width="200" VerticalAlignment="Center"/>
+                <Button x:Name="button_run_search" Content="GO" VerticalAlignment="Center" Width="30" Height="30"/>
+            </StackPanel>
+        </Grid>
+        <Rectangle DockPanel.Dock="Top" HorizontalAlignment="Stretch" Fill="Black" Height="4"/>
+
+
+
+
+        <StackPanel Background="#b3def0" DockPanel.Dock="Top" Orientation="Horizontal">
+            <StackPanel Margin="2,0">
+                <Label FontWeight="Bold">Types</Label>
+                <CheckBox x:Name="Movies_checkbox" IsChecked="True">Movies</CheckBox>
+                <CheckBox x:Name="Series_checkbox">Series</CheckBox>
+            </StackPanel>
+            <Rectangle x:Name="tester" HorizontalAlignment="Stretch" Fill="Black" Width="2"/>
+            <StackPanel x:Name="Stackpanel_genres" Margin="2,0">
+                <DockPanel>
+                    <Label Content="Genres" FontWeight="Bold"></Label>
+                    <CheckBox x:Name="Checkbox_genre_and_or" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" ToolTipService.InitialShowDelay="500" ToolTip="If this is ticked only movies are shown that belong to all the genres applied.">exclusive</CheckBox>
+                </DockPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <CheckBox x:Name="Checkbox_genre_action" IsChecked="True" FontSize="16">Action</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_adventure" FontSize="16">Adventure</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_comedy" FontSize="16">Comedy</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_SciFi" FontSize="16">Sci-Fi</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Crime" FontSize="16">Crime</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Drama" FontSize="16">Drama</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Thriller" FontSize="16">Thriller</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Animation" FontSize="16">Animation</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Sport" FontSize="16">Sport</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Horror" FontSize="16">Horror</CheckBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="Checkbox_genre_History" FontSize="16">History</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Biography" FontSize="16">Biography</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Romance" FontSize="16">Romance</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Fantasy" FontSize="16">Fantasy</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Mystery" FontSize="16">Mystery</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Documentary" FontSize="16">Documentary</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Western" FontSize="16">Western</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Adult" FontSize="16">Adult</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Game_Show" FontSize="16">Game-Show</CheckBox>
+                        <CheckBox x:Name="Checkbox_genre_Reality_TV" FontSize="16">Reality-TV</CheckBox>
+                    </StackPanel>
+                </StackPanel>
+                
+            </StackPanel>
+            <Rectangle HorizontalAlignment="Stretch" Fill="Black" Width="2"/>
+            <StackPanel>
+                <Label Content="Rating" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Year from" FontSize="{StaticResource ResourceKey=labelfontsize1}"/>
+                    <TextBox  x:Name="Numberbox_year_from"  Text="2000" MaxLength="4"  PreviewTextInput="NumberValidationyear1"></TextBox>
+                    <Label Content="to" FontSize="{StaticResource ResourceKey=labelfontsize1}"/>
+                    <TextBox x:Name="Numberbox_year_to" Text="2020" MaxLength="4"  PreviewTextInput="NumberValidationyear1"></TextBox>
+                </StackPanel>
+                <Border CornerRadius="2" BorderBrush="Gray"  BorderThickness="2" >
+                    <StackPanel >
+                        <Label Content="Minimum of IMDatabase" FontSize="{StaticResource ResourceKey=labelfontsize1}"/>
+                        <DockPanel>
+                            <Slider Name="slValue_imd" DockPanel.Dock="Left" MinWidth="140" Maximum="10" Minimum="-1" Value="-1" TickPlacement="BottomRight" TickFrequency="10" Background="AliceBlue" />
+                            <TextBox Text="{Binding ElementName=slValue_imd, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+                <Border CornerRadius="2" BorderBrush="Gray"  BorderThickness="2" >
+                    <StackPanel >
+                        <Label Content="Minimum of RTomatoes" FontSize="{StaticResource ResourceKey=labelfontsize1}"/>
+                        <DockPanel>
+                            <Slider Name="slValue_rt" DockPanel.Dock="Left" MinWidth="140" Maximum="100" Minimum="-1" Value="-1" TickPlacement="BottomRight" TickFrequency="10" Background="AliceBlue" />
+                            <TextBox Text="{Binding ElementName=slValue_rt, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+                <Border CornerRadius="2" BorderBrush="Gray"  BorderThickness="2" >
+                    <StackPanel >
+                        <Label Content="Minimum of Metacritic" FontSize="{StaticResource ResourceKey=labelfontsize1}"/>
+                        <DockPanel>
+
+                            <Slider Name="slValue_metacritic" DockPanel.Dock="Left" MinWidth="140" Maximum="100" Minimum="-1" Value="-1" TickPlacement="BottomRight" TickFrequency="10" Background="AliceBlue" />
+                            <TextBox Text="{Binding ElementName=slValue_metacritic, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <Rectangle HorizontalAlignment="Stretch" Fill="Black" Width="2"/>
+            <Button x:Name="Filtersearchbutton" Content="Search with Filter" Background="#fdf498"></Button>
+
+
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Label Content="Results found: " FontSize="14"/>
+            <TextBlock x:Name="Resltsfound_text" Text="0" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock x:Name="Testtext" Text=""/>
+        </StackPanel>
+        <ScrollViewer DockPanel.Dock="Top" Name="scrollViewer1" BorderBrush="AliceBlue" BorderThickness="2"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" CanContentScroll="True"  Margin="1">
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Grid.Row="0" Height="300">
+                    <DockPanel>
+                        <TextBlock x:Name="button_label0" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Text="titlemovie" ></TextBlock>
+                        <Image x:Name="button_image0" DockPanel.Dock="Top" Stretch="Uniform" />
+                    </DockPanel>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="0" Height="300">
+                    <DockPanel>
+                        <TextBlock x:Name="button_label1" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Text="titlemovie" ></TextBlock>
+                        <Image x:Name="button_image1" DockPanel.Dock="Top"  Stretch="Uniform" />
+                    </DockPanel>
+                </Button>
+                <Button Grid.Column="2" Grid.Row="0" Height="300">
+                    <DockPanel>
+                        <TextBlock x:Name="button_label2" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Text="title" ></TextBlock>
+                        <Image x:Name="button_image2" DockPanel.Dock="Top"  Stretch="Uniform" />
+                    </DockPanel>
+                </Button>
+                <Button Grid.Column="3" Grid.Row="0" Height="300">
+                    <DockPanel>
+                        <TextBlock x:Name="button_label3" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Text="titlemovie" ></TextBlock>
+                        <Image x:Name="button_image3" DockPanel.Dock="Top"  Stretch="Uniform" />
+                    </DockPanel>
+                </Button>
+                <Button Grid.Column="4" Grid.Row="0" Height="300">
+                    <DockPanel>
+                        <TextBlock x:Name="button_label4" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Text="titlemovie" ></TextBlock>
+                        <Image x:Name="button_image4" DockPanel.Dock="Top"  Stretch="Uniform" />
+                    </DockPanel>
+                </Button>
+                <Button Grid.Column="5" Grid.Row="0" Height="300">
+                    <DockPanel>
+                        <TextBlock x:Name="button_label5" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Text="Pirates of the Caribbean" ></TextBlock>
+                        <Image x:Name="button_image5" DockPanel.Dock="Top" Source="https://m.media-amazon.com/images/M/MV5BMjIyNjkxNzEyMl5BMl5BanBnXkFtZTYwMjc3MDE3._V1_SX300.jpg" Stretch="Uniform" />
+                    </DockPanel>
+                </Button>
+                
+                <!--  
+                    <Image x:Name="button_image0" DockPanel.Dock="Top" Source="{Binding ImagePath,Converter={StaticResource ImageFileLoader},UpdateSourceTrigger=PropertyChanged}" Stretch="Uniform" />
+                    
+                    <Image HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Bottom" Grid.Row="8" Width="200"  Grid.ColumnSpan="2" >
+                            <Image.Source>
+                                <BitmapImage DecodePixelWidth="200" UriSource="{Binding Path=DisplayedImage, Mode=TwoWay}" />
+                            </Image.Source>
+                        </Image>
+                <DockPanel Grid.Column="1" Grid.Row="0">
+                    <Button x:Name="button_image1" Margin="5" Height="250" DockPanel.Dock="Top" Background="#FFDDDDDD" Cursor="Hand">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Image  Source="https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg"/>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Label x:Name="button_label1" FontSize="20" DockPanel.Dock="Bottom" Margin="0,5,0,0" HorizontalAlignment="Center" Content="moviename0"/>
+                </DockPanel>
+                <DockPanel Grid.Column="2" Grid.Row="0">
+                    <Button x:Name="button_image2" Margin="5" Height="250" DockPanel.Dock="Top" Background="#FFDDDDDD" Cursor="Hand">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Image  Source="https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg"/>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Label x:Name="button_label2old" FontSize="20" DockPanel.Dock="Bottom" Margin="0,5,0,0" HorizontalAlignment="Center" Content="moviename0"/>
+                </DockPanel>
+
+                
+
+                <Button x:Name="button_image3" Grid.Column="3" Grid.Row="0" Margin="5" Height="250" Background="#FFDDDDDD" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image  Source="https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="button_image4" Grid.Column="4" Grid.Row="0" Margin="5" Height="250" Background="#FFDDDDDD" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image  Source="https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="button_image5" Grid.Column="5" Grid.Row="0" Margin="5" Height="250" Background="#FFDDDDDD" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image  Source="https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Image Grid.Column="0" Grid.Row="0" Margin="5" Height="250" Source="https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg" />
+            <Image Grid.Column="0" Grid.Row="1" Margin="5" Height="250" Source="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg" />
+            <Image Grid.Column="0" Grid.Row="2" Margin="5" Height="250" Source="https://m.media-amazon.com/images/M/MV5BMTQ1OTU0ODcxMV5BMl5BanBnXkFtZTcwOTMxNTUwOA@@._V1_SX300.jpg" />
+            -->
+        </Grid>
+        </ScrollViewer>
+            <TextBlock x:Name="GreetingTextBlock" 
+                   HorizontalAlignment="Center"
+                   FontWeight="SemiBold"
+                   FontSize="16"
+                   Margin="20 10 20 10"
+                   />
+        <TextBlock x:Name="LangTextBlock" HorizontalAlignment="Center"/>
+        
+        
+        
+
+    </DockPanel>
+</reactiveui:ReactiveWindow>
