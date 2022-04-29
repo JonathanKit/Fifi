@@ -6,6 +6,8 @@ January 2021
 
 Sometimes it can be so hard to find a movie that suits to watch, especially when watching a movie with more people. So, the aim of this project is to have a program where the watcher can set its favourable attributes of the movie and the program will deliver a movie for a perfect movie-night.
 
+![Alt text](Inkeddonald_LI.jpg?raw=true "Screenshot")
+
 **The program is written in C# with WPF, ReactiveUI and Fody in a MVVM style**
 
 Author: Jonathan Helmond
